@@ -13,7 +13,7 @@ let timerId = null;
 timerContainer.style.cssText = 'display:flex; gap:15px';
 for (const item of timerContainer.children) {
   item.style.cssText =
-    'display:flex; align-items:center;;flex-direction:column; text-transform:uppercase;';
+    'display:flex; align-items:center;flex-direction:column; text-transform:uppercase;';
   item.firstElementChild.style.cssText = 'font-weight:bold; font-size:32px';
 }
 
@@ -64,15 +64,12 @@ const options = {
       dataHoursEl.textContent = hours;
       dataMinutesEl.textContent = minutes;
       dataSecondsEl.textContent = seconds;
-      console.log(days, hours, minutes, seconds);
 
-      if (
-        dataDaysEl.textContent === '0' &&
-        dataHoursEl.textContent === '00' &&
-        dataMinutesEl.textContent === '00' &&
-        dataSecondsEl.textContent === '00'
-      ) {
+      if (days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
         clearInterval(timerId);
+        timerId = null;
+
+        btnStart.disabled = true;
       }
     };
 
